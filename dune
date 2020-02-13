@@ -1,0 +1,13 @@
+(library
+ (name dpdgraph)
+ (wrapped false)
+ (libraries ocamlgraph coq.vernac))
+
+(ocamllex dpd_lex)
+(ocamlyacc dpd_parse)
+
+(rule
+ (targets version.ml)
+ (action (write-file %{targets} "let version = \"dev\" ")))
+
+(coq.pp (modules searchdepend graphdepend))
